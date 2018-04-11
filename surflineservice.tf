@@ -8,7 +8,24 @@ data "template_file" "surfline-task-definition-template" {
 
 resource "aws_ecs_task_definition" "surfline-task-definition" {
   family                = "surfline"
-  container_definitions = "${data.template_file.surfline-task-definition-template.rendered}"
+  container_definitions = "${data.template_file.surfline-task-definition-template.rendered}
+}
+
+resource "aws_ecs_service" "surfline-service" {
+  count = "${var.Surfline_SERVICE_ENABLE}"
+  name = "surfline"
+  cluster = "${aws_ecs_cluster.overhead-cluster.id}"
+  task_definition = "${aws_ecs_task_definition.surfline-task-definition.arn}"
+  desired_count = 1
+  iam_role = "${aws_iam_role.ecs-service-role.arn}"
+  depends_on = ["aws_iam_policy_attachment.ecs-service-attach1"]
+
+  load_balancer {
+    elb_name = "${aws_elb.surfline-elb.name}"
+    container_name = "myapp"
+    container_port = 3000
+  }
+  lifecycle { ignore_changes = ["task_definition"] }
 
 }
 
