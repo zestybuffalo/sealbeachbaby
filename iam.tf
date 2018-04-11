@@ -22,7 +22,7 @@ resource "aws_iam_instance_profile" "ecs-ec2-role" {
 }
 
 resource "aws_iam_role" "ecs-consul-server-role" {
-    name = "jaws"
+    name = "blackies"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
