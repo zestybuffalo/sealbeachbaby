@@ -57,21 +57,21 @@ in the command it should be something like....
 		-terraform apply -target aws_ecs_service.surfline-service -var Surfline_SERVICE_ENABLE="1" -var surfline_version = 		${surfline_version}
 	b)SAVE
 
-5) run configure remote state script back in the cli
+8) run configure remote state script back in the cli
 
-6)Navigate back to your first project you created and navigate to "Build Environment"
+9)Navigate back to your first project you created and navigate to "Build Environment"
 
 	a) On post build actions type in the name of second project you created
 	b)Select trigger when build is "stable"
 	c)add a predefined paramater of APP_VERSION: ${GIT_COMMIT}
 	d)SAVE
 
-7) Select Build now.
+10) Select Build now.
 
-8) you should see all of your resources being built. It should be pulling your Docker image and you should see the steps being carried out as seen in our Dockerfile e.g. Node, npm
+11) you should see all of your resources being built. It should be pulling your Docker image and you should see the steps being carried out as seen in our Dockerfile e.g. Node, npm
 install, pushing the image to ecr. Go grab coffee. You should also see it is triggering your second project at the tail end.
 
-9) If you navigate back to your project you will see that the build has been triggered which mainly includes your ecs service and it will spit out your elb DNS id. copy and paste the DNS 
+12) If you navigate back to your project you will see that the build has been triggered which mainly includes your ecs service and it will spit out your elb DNS id. copy and paste the DNS 
 into the URL and you should see "Hello World" nodejs app, using jenkins and various terraform files
 
 
