@@ -13,7 +13,7 @@ resource "aws_ecs_task_definition" "surfline-task-definition" {
 
 
 resource "aws_ecs_service" "surfline-service" {
-  count = "${var.MYAPP_SERVICE_ENABLE}"
+  count = "${var.SURFLINE_SERVICE_ENABLE}"
   name = "surfline"
   cluster = "${aws_ecs_cluster.overhead-cluster.id}"
   task_definition = "${aws_ecs_task_definition.surfline-task-definition.arn}"
