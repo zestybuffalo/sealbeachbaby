@@ -11,6 +11,7 @@ resource "aws_ecs_task_definition" "surfline-task-definition" {
   container_definitions = "${data.template_file.surfline-task-definition-template.rendered}
 }
 
+
 resource "aws_ecs_service" "surfline-service" {
   count = "${var.Surfline_SERVICE_ENABLE}"
   name = "surfline"
@@ -22,7 +23,7 @@ resource "aws_ecs_service" "surfline-service" {
 
   load_balancer {
     elb_name = "${aws_elb.surfline-elb.name}"
-    container_name = "myapp"
+    container_name = "surfline"
     container_port = 3000
   }
   lifecycle { ignore_changes = ["task_definition"] }
