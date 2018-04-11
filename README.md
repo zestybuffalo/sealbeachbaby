@@ -35,14 +35,14 @@ i.e.If it is on 11.111.111.11 then navigate to  11.111.111.11:8080
 
 3) Create a new proyecto in Jenkins 
 
-4)Add source code from my github url
-a)scroll down under the "Build" heading of the URL. Select "execute shell" which will execute the shell script.
-b) in the command it should be something like....
+4) Add source code from my github url
+	a)scroll down under the "Build" heading of the URL. Select "execute shell" which will execute the shell script.
+	b) in the command it should be something like....
 		"docker -t ecr_URL/surfline:{Git_Commit} . "
 		eval "$(aws ecr get-login --region -us-east-1)"
 		"docker push ecr_URL/surfline:{Git_Commit}
-c)SAVE.
-d)login to the jenkins box and ssh -i mykey ubuntu@jenkinsIP  **MAJOR KEY ALERT**
+	c)SAVE.
+	d)login to the jenkins box and ssh -i mykey ubuntu@jenkinsIP  **MAJOR KEY ALERT**
 		i.sudo su-jenkins and run AWS Configure and enter proper AWS ACcess and Secret Keys **MAJOR KEY ALERT**
 5)Create another new freestyle project
 	a) same as 4(b) except the command will be different
