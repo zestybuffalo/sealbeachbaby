@@ -1,6 +1,6 @@
-resource "aws_security_group" "surflineusa-securitygroup" {
+resource "aws_security_group" "resourcename-securitygroup" {
   vpc_id = "${aws_vpc.main.id}"
-  name = "surflineusa"
+  name = "name1_SG"
   description = "security group for ecs"
   egress {
       from_port = 0
@@ -13,7 +13,7 @@ resource "aws_security_group" "surflineusa-securitygroup" {
       from_port = 3000
       to_port = 3000
       protocol = "tcp"
-      security_groups = ["${aws_security_group.surflineusa-elb-securitygroup.id}"]
+      security_groups = ["${aws_security_group.SG_name-elb-securitygroup.id}"]
   } 
   ingress {
       from_port = 22
@@ -25,9 +25,9 @@ resource "aws_security_group" "surflineusa-securitygroup" {
     Name = "ecs"
   }
 }
-resource "aws_security_group" "surflineusa-elb-securitygroup" {
+resource "aws_security_group" "resource_name-elb-securitygroup" {
   vpc_id = "${aws_vpc.main.id}"
-  name = "surflineusa-elb"
+  name = "resource_name-elb"
   description = "security group for ecs"
   egress {
       from_port = 0
@@ -43,7 +43,7 @@ resource "aws_security_group" "surflineusa-elb-securitygroup" {
       cidr_blocks = ["0.0.0.0/0"]
   } 
   tags {
-    Name = "surflineusa-elb"
+    Name = "resource_name-elb"
   }
 }
 # jenkins
