@@ -1,9 +1,9 @@
 output "elb" {
-  value = "${aws_elb.surfline-elb.dns_name}"
+  value = "${aws_elb.aws_elb_name.dns_name}"
 }
 output "jenkins" {
   value = "${aws_instance.jenkins-instance.public_ip}"
 }
 output "ecr-repository-URL" {
-  value = "${aws_ecr_repository.surflineusa.repository_url}"
+  value = "${aws_ecr_repository.ecr_repo_name.repository_url}"
 }
