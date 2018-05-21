@@ -2,7 +2,7 @@
   {
     "essential": true,
     "memory": 256,
-    "name": "surfline",
+    "name": "name",
     "cpu": 256,
     "image": "${REPOSITORY_URL},${APP_VERSION}"
     "workingDirectory": "/app",
