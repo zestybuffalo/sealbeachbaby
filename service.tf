@@ -1,7 +1,7 @@
 data "template_file" "surfline-task-definition-template" {
   template               = "${file("templates/app.json.tpl")}"
   vars {
-    REPOSITORY_URL = "${replace("${aws_ecr_repository.surflineusa.repository_url}", "https://", "")}"
+    REPOSITORY_URL = "${replace("${aws_ecr_repository.app_name.repository_url}", "https://", "")}"
     APP_VERSION = "${var.MYAPP_VERSION}" 
  }
 }
@@ -22,16 +22,16 @@ resource "aws_ecs_service" "surfline-service" {
   depends_on = ["aws_iam_policy_attachment.ecs-service-attach1"]
 
   load_balancer {
-    elb_name = "${aws_elb.surfline-elb.name}"
-    container_name = "surfline"
+    elb_name = "${aws_elb.yourapp-elb.name}"
+    container_name = "container_name"
     container_port = 3000
   }
   lifecycle { ignore_changes = ["task_definition"] }
 
 }
 
-resource "aws_elb" "surfline-elb" {
-  name = "surfline-elb"
+resource "aws_elb" "yourapp-elb" {
+  name = "name-elb"
 
   listener {
     instance_port = 3000
