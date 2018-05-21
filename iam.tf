@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecs-ec2-role" {
-    name = "rincon"
+    name = "name1"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -17,12 +17,12 @@ resource "aws_iam_role" "ecs-ec2-role" {
 EOF
 }
 resource "aws_iam_instance_profile" "ecs-ec2-role" {
-    name = "wedge"
+    name = "name2"
     roles = ["${aws_iam_role.ecs-ec2-role.name}"]
 }
 
 resource "aws_iam_role" "ecs-consul-server-role" {
-    name = "blackies"
+    name = "name3"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -41,7 +41,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "ecs-ec2-role-policy" {
-    name = "mavericks"
+    name = "name4"
     role = "${aws_iam_role.ecs-ec2-role.id}"
     policy = <<EOF
 {
@@ -86,7 +86,7 @@ EOF
 
 # ecs service role
 resource "aws_iam_role" "ecs-service-role" {
-    name = "anderson"
+    name = "name5"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
